@@ -1,0 +1,203 @@
+{
+  "tests": [
+    {
+      "name": "1. Verificar exercicio1.py (1 a 10)",
+      "run": "python exercicio1.py | grep -q '1' && python exercicio1.py | grep -q '10' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5
+    },
+    {
+      "name": "2. Verificar exercicio2.py (Soma 1 a N)",
+      "run": "python exercicio2.py <<< '10' | grep -q '55' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "2.1 Verificar exercicio2.py com N=0",
+      "run": "python exercicio2.py <<< '0' | grep -q '0' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa o caso limite quando N é zero"
+    },
+    {
+      "name": "2.2 Verificar exercicio2.py com N negativo",
+      "run": "python exercicio2.py <<< '-5' | grep -q 'INVALIDO' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa com valor negativo para N"
+    },
+    {
+      "name": "3. Verificar exercicio3.py (Tabuada)",
+      "run": "python exercicio3.py <<< '5' | grep -q '5 x 10 = 50' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "3.1 Verificar exercicio3.py com número negativo",
+      "run": "python exercicio3.py <<< '-3' | grep -q '-3 x 10 = -30' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa a tabuada com número negativo"
+    },
+    {
+      "name": "3.2 Verificar exercicio3.py com zero",
+      "run": "python exercicio3.py <<< '0' | grep -q '0 x 10 = 0' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa a tabuada do zero"
+    },
+    {
+      "name": "4. Verificar exercicio4.py (Fatorial)",
+      "run": "python exercicio4.py <<< '5' | grep -q '120' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "4.1 Verificar exercicio4.py com N=0",
+      "run": "python exercicio4.py <<< '0' | grep -q '1' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa o fatorial de zero (caso especial)"
+    },
+    {
+      "name": "4.2 Verificar exercicio4.py com N negativo",
+      "run": "python exercicio4.py <<< '-5' | grep -q 'INVALIDO' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa com valor negativo para N"
+    },
+    {
+      "name": "5. Verificar exercicio5.py (Primos)",
+      "run": "python exercicio5.py <<< '7' | grep -q '7 eh primo' && python exercicio5.py <<< '4' | grep -q '4 nao eh primo' && echo 'OK' || echo 'ERRO'",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "5.1 Verificar exercicio5.py com N=1",
+      "run": "python exercicio5.py <<< '1' | grep -q '1 nao eh primo' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa o caso especial do número 1 (não é primo)"
+    },
+    {
+      "name": "5.2 Verificar exercicio5.py com N negativo",
+      "run": "python exercicio5.py <<< '-7' | grep -q 'INVALIDO' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa com valor negativo para N"
+    },
+    {
+      "name": "6. Verificar exercicio6.py (Fibonacci)",
+      "run": "python exercicio6.py <<< '10' | grep -q '0, 1, 1, 2, 3, 5, 8, 13, 21, 34' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "6.1 Verificar exercicio6.py com N=0",
+      "run": "python exercicio6.py <<< '0' | grep -q ',' && echo 'ERRO' || echo 'OK'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa quando N é zero (deve retornar lista vazia)"
+    },
+    {
+      "name": "6.2 Verificar exercicio6.py com N negativo",
+      "run": "python exercicio6.py <<< '-5' | grep -q 'INVALIDO' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa com valor negativo para N"
+    },
+    {
+      "name": "7. Verificar exercicio7.py (Asteriscos)",
+      "run": "python exercicio7.py <<< '5' | grep -q '*****' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5
+    },
+    {
+      "name": "7.1 Verificar exercicio7.py com N=0",
+      "run": "python exercicio7.py <<< '0' | grep -q '*' && echo 'ERRO' || echo 'OK'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa quando N é zero (deve retornar string vazia)"
+    },
+    {
+      "name": "7.2 Verificar exercicio7.py com N negativo",
+      "run": "python exercicio7.py <<< '-3' | grep -q 'INVALIDO' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa com valor negativo para N"
+    },
+    {
+      "name": "8. Verificar exercicio8.py (Série Harmônica)",
+      "run": "python exercicio8.py <<< '10' | grep -q '2.93' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "8.1 Verificar exercicio8.py com N=0",
+      "run": "python exercicio8.py <<< '0' | grep -q '0.00' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa quando N é zero (soma harmônica deve ser zero)"
+    },
+    {
+      "name": "8.2 Verificar exercicio8.py com N negativo",
+      "run": "python exercicio8.py <<< '-5' | grep -q 'INVALIDO' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 5,
+      "points": 5,
+      "description": "Testa com valor negativo para N"
+    },
+    {
+      "name": "9. Verificar exercicio9.py (Números Perfeitos)",
+      "run": "python exercicio9.py | grep -q '6' && python exercicio9.py | grep -q '28' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 10,
+      "points": 15
+    },
+    
+    {
+      "name": "10. Verificar exercicio10.py (Números de Kaprekar)",
+      "run": "echo -e '1\\n10000' | python exercicio10.py | grep -q -e '1' -e '9' -e '45' -e '55' -e '99' -e '297' -e '703' -e '999' && echo 'OK' || echo 'ERRO'",
+      "timeout": 10,
+      "points": 25,
+      "output": "OK",
+      "description": "Verifica se o código identifica corretamente os números de Kaprekar no intervalo 1-10000."
+    },
+    {
+      "name": "10.1 Verificar exercicio10.py com intervalo inválido",
+      "run": "echo -e '10000\\n1' | python exercicio10.py | grep -q 'INVALIDO' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 10,
+      "points": 5,
+      "description": "Testa quando o início do intervalo é maior que o fim"
+    },
+    {
+      "name": "10.2 Verificar exercicio10.py com números negativos",
+      "run": "echo -e '-100\\n100' | python exercicio10.py | grep -q '1' && echo -e '-100\\n100' | python exercicio10.py | grep -q '9' && echo 'OK' || echo 'ERRO'",
+      "output": "OK",
+      "timeout": 10,
+      "points": 5,
+      "description": "Testa com intervalo que inclui números negativos (deve ignorar os negativos)"
+    }
+  ]
+}
