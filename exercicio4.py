@@ -1,11 +1,6 @@
-N = int(input())
-expoente = N
-i = N
-while expoente >= 1:
-    expoente = N
-    result = N * expoente
-    print("NUMERO = ", N, "expoente = ", expoente)
-    print(expoente)
-
-    print(result)
-    expoente -= 1
+numero = int(input("Digite um número: "))
+fatorado = 1
+while 1 <= numero:
+    fatorado = fatorado * numero
+    numero-=1
+print(fatorado)
