@@ -1,4 +1,37 @@
-numero = int(input("Digite o número: "))
+vezes = int(input("Digite o número: "))
+anterior = 0
+atual = 1
+proximo = 1
+lista = [0]
 
-for linha in range(1, numero):
-    print()
+for i in range(1, vezes):
+    proximo = atual + anterior
+    anterior = atual
+    atual = proximo
+    lista.append(atual)
+    print(i)
+print(lista)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
