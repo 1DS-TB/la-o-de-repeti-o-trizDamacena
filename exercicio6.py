@@ -2,17 +2,17 @@ vezes = int(input("Digite o número: "))
 anterior = 0
 atual = 1
 proximo = 1
-lista = [0]
-
-for i in range(1, vezes):
-    proximo = atual + anterior
-    anterior = atual
-    atual = proximo
-    lista.append(atual)
+lista = []
 if vezes < 1:
     print("INVALIDO")
-print(lista)
+else:
+    for i in range(1, vezes):
+        lista.append(anterior)
+        proximo = atual + anterior
+        anterior = atual
+        atual = proximo
 
+print(lista)
 
 
 

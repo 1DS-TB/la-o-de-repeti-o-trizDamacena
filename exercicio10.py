@@ -12,7 +12,7 @@ else:
             if i == 9 or i == 1:
                 print(f"O número {i} é um número Kaprekar.")
 
-        elif tamanho % 2 != 0:
+        elif tamanho % 2 != 0 or i == 9 or i == 1:
             metade = tamanho // 2
             vDireita = tamanho - metade
             vEsquerda = tamanho - vDireita
