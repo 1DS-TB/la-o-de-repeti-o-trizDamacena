@@ -8,8 +8,7 @@ if numero > 0:
           fatorado = fatorado * numero
           numero -= 1
 elif numero < 0:
-     fatorado = 0
-     print(fatorado)
+     print("INVALIDO")
 
 elif numero == 0:
      fatorado == 1
