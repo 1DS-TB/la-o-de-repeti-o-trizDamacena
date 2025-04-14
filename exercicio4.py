@@ -8,10 +8,7 @@ if numero > 0:
           fatorado = fatorado * numero
           numero -= 1
 elif numero < 0:
-     numero *= -1
-     while 1 <= numero:
-          fatorado = fatorado * numero
-          numero -= 1
+     print()
 
 elif numero == 0:
      fatorado == 1
