@@ -1,13 +1,13 @@
 v1 = int(input("Digite o primeiro intervalo: "))
-v2 = int(input("Digite o segundo intervalo: "))
+
 anterior = 0
 atual = 1
 proximo = 1
 lista = []
-if v1 < 1 or v2 < 1:
+if v1 < 1 :
     print("INVALIDO")
 else:
-    for i in range(v1, v2):
+    for i in range(1, v1):
         lista.append(anterior)
         proximo = atual + anterior
         anterior = atual
@@ -15,25 +15,3 @@ else:
 
 lista.append(anterior)
 print(lista)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
