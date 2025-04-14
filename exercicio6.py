@@ -9,7 +9,12 @@ for i in range(1, vezes):
     anterior = atual
     atual = proximo
     lista.append(atual)
-    print(i)
+if vezes < 1:
+    for i in range(vezes, -1):
+        proximo = atual + anterior
+        anterior = atual
+        atual = proximo
+        lista.append(atual)
 print(lista)
 
 

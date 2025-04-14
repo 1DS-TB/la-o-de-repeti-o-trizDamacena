@@ -3,7 +3,8 @@ from random import randint
 
 from Tools.scripts.summarize_stats import emit_specialization_overview
 
-vez = 1
+vezes = 0
+
 turno = 1
 
 print("======= MENU =======")
@@ -23,40 +24,24 @@ else:
     inimigo2DFS = random.randint(1, 50)
     while True:
 
-        if vez == 1:
-            vez += 1
-            print("=== DUELO DE HERÓIS ===")
-            print(f"\n--- Turno {turno} ---")
-            print(f"=== VOCÊ ===\nHP: {jogador1}\nATQ: {jogador1Dano}      DEF: {jogador1DFS}\n")
-            print(f"=== INIMIGO ===\nHP: {inimigo2}\nATQ: {inimigo2Dano}      DEF: {inimigo2DFS}")
-            acao = int(input("Sua vez: [1] Atacar ou [2] Curar:\n "))
-            if acao == 1:
-                dano = jogador1Dano - jogador1DFS
-                if dano < 0:
-                    dano *= -1
-                dano = max(0, dano)
-                inimigo2 -= dano
-                print(f"Você ataca! Inimigo perde {dano} HP.\n")
 
-            else:
-                cura = random.randint(10, 50)
-                jogador1 += cura
-                if jogador1 > HP:
-                    jogador1 = HP
-                    print(f"Você se cura em {cura} HP!\n")
+        print("=== DUELO DE HERÓIS ===")
+        print(f"\n--- Turno {turno} ---")
+        print(f"=== VOCÊ ===\nHP: {jogador1}\nATQ: {jogador1Dano}      DEF: {jogador1DFS}\n")
+        print(f"=== INIMIGO ===\nHP: {inimigo2}\nATQ: {inimigo2Dano}      DEF: {inimigo2DFS}")
+        acao = int(input("Sua vez: [1] Atacar ou [2] Curar: "))
+        escolha = random.choice(["atacar", "curar"])
 
-            if inimigo2 <= 0:
-                print("Você ganhou!")
-            turno+=1
+        if acao == 1:
+            dano = jogador1Dano - jogador1DFS
+            if dano < 0:
+                dano *= -1
+            dano = max(0, dano)
+            inimigo2 -= dano
+            print(f"Você ataca! Inimigo perde {dano} HP.")
 
-        else:
-            print("=== DUELO DE HERÓIS ===")
-            print(f"\n--- Turno {turno} ---")
-            print(f"=== VOCÊ ===\nHP: {jogador1}\nATQ: {jogador1Dano}      DEF: {jogador1DFS}\n")
-            print(f"=== INIMIGO ===\nHP: {inimigo2}\nATQ: {inimigo2Dano}      DEF: {inimigo2DFS}")
-            escolha = random.choice(["atacar", "curar"])
-            print(f"O inimigo escolhe: `{escolha}")
-            if escolha == "atacar":
+            if escolha == "atacar" or vezes >2 :
+                vezes = 0
                 dano = inimigo2Dano - inimigo2DFS
                 if dano < 0:
                     dano *= -1
@@ -65,15 +50,43 @@ else:
                 print(f"Inimigo ataca! Você perde {dano} HP.\n")
 
             else:
+                vezes += 1
                 cura = random.randint(10, 50)
                 inimigo2 += cura
                 if inimigo2 >= HP:
                     inimigo2 = HP
-                    print(f"O inimigo se cura em {cura} HP!\n")
-                else:
-                    inimigo2 += cura
-                    print(f"O inimigo se cura em {cura} HP!\n")
+                print(f"O inimigo se cura em {cura} HP!\n")
 
 
-            vez -= 1
-            turno += 1
+        else:
+            cura = random.randint(10, 50)
+            jogador1 += cura
+
+            if jogador1 > HP:
+                jogador1 = HP
+            print(f"Você se cura em {cura} HP!\n")
+            if escolha == "atacar" or vezes > 2:
+                vezes = 0
+                dano = inimigo2Dano - inimigo2DFS
+                if dano < 0:
+                    dano *= -1
+                dano = max(0, dano)
+                jogador1 -= dano
+                print(f"Inimigo ataca! Você perde {dano} HP.\n")
+
+            else:
+                vezes += 1
+                cura = random.randint(10, 50)
+                inimigo2 += cura
+                if inimigo2 >= HP:
+                    inimigo2 = HP
+                print(f"O inimigo se cura em {cura} HP!\n")
+
+            if inimigo2 <= 0:
+                print("Você ganhou!")
+                break
+            elif jogador1 <= 0:
+                print("Você perdeu!")
+                break
+
+        turno += 1
