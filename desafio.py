@@ -4,6 +4,7 @@ from random import randint
 
 from Tools.scripts.summarize_stats import emit_specialization_overview
 passar = 0
+passar1 = 1
 vezes = 0
 dfs = 0
 vezesPocoes = 0
@@ -16,8 +17,8 @@ verdade1 = False
 verdade2 = False
 verdade3 = False
 
-pocoes = ["[1] Bate Ganha: Ataque o inimigo e ganhe 5% de cura",
-          "[2] Apanha Bate: Caso o inimigo atacar, cause 2% de dano de volta",
+pocoes = ["[1] Bate Ganha: Se o inimigo atacou, ganhe 5% de cura por duas rodadas",
+          "[2] Apanha Bate: Caso o inimigo atacar, cause 2% de dano adicional de volta por duas rodadas",
           "[3] Aumentar poder de ataque por dois turnos",
           "[4] Receba todos os HP de volta, somente em uma rodada"]
 
@@ -45,8 +46,8 @@ else:
         HP = random.randint(200, 1000)
         jogador1 = HP
         inimigo2 = HP
-        jogador1_25 = (jogador1 * 25)/100
-        inimigo2_25 = (inimigo2 * 25) / 100
+        jogador1_25 = (jogador1 * 25)//100
+        inimigo2_25 = (inimigo2 * 25) // 100
 
         jogador1Dano = random.randint(1, 50)
         inimigo2Dano = random.randint(1, 50)
@@ -83,16 +84,16 @@ else:
                     print(st)
                 respostaStatus = int(input(": "))
 
-            if respostaStatus == 1:
-                inimigo2 -= (HP * 5)/100
-            elif respostaStatus == 2:
-                passar = 1
-            elif respostaStatus == 3 or dfs < 3:
-                inimigo2DFS = 0
-                dfs += 1
-            elif respostaStatus == 4:
-                if jogador1 <= jogador1_25:
-                    jogador1 += (HP*30)/100
+                if respostaStatus == 1:
+                    inimigo2 -= (HP * 5)//100
+                elif respostaStatus == 2:
+                    passar = 1
+                elif respostaStatus == 3 or dfs < 3:
+                    inimigo2DFS = 0
+                    dfs += 1
+                elif respostaStatus == 4:
+                    if jogador1 <= jogador1_25:
+                        jogador1 += (HP*30)//100
 
 
             if passar == 0:
@@ -111,13 +112,15 @@ else:
 
             elif verdade2 == True:
                 vezesPocoes+=1
+                danoSofrido = HP - jogador1
                 danoPocao = inimigo2 - ((danoSofrido * 2) / 100)
                 if vezesPocoes > 2:
                     verdade1 = False
                     danoPocao = 0
-                    vezesPocoes -= vezesPocao3
+                    opcaoPocao -= opcaoPocao
+
             elif verdade3 == True:
-                jogador1Dano = (jogador1Dano * 30) / 100
+                jogador1Dano = (jogador1Dano * 30) // 100
                 if vezesPocoes > 2:
                     verdade3 = False
                     vezesPocoes -= vezesPocao3
@@ -134,27 +137,25 @@ else:
     #OPÇÕES DE POCOES ---------------------------------------------------------------------------------------------------
                 if opcaoPocao == 1:
                     curaPocao = random.randint(10, 50)
-                    curaPocao = (curaPocao * 5) / 100
+                    curaPocao = (curaPocao * 5) // 100
                     pocoes.remove("[1] Bate Ganha: Se o inimigo atacou, ganhe 5% de cura por duas rodadas")
                     roda = 0
                     verdade = True
                     verdade1 = True
                     opcaoPocao -= opcaoPocao
 
-                if opcaoPocao == 2:
+                elif opcaoPocao == 2:
                     if jogador1 != HP:
-                        danoSofrido = HP - jogador1
-                        danoPocao = inimigo2 - ((danoSofrido*2)/100)
-                    pocoes.remove("[2] Apanha Bate: Caso o inimigo atacar, cause 2% de dano adicional de volta por duas rodadas")
-                    verdade2 = True
-                    opcaoPocao -= opcaoPocao
+                        pocoes.remove("[2] Apanha Bate: Caso o inimigo atacar, cause 2% de dano adicional de volta por duas rodadas")
+                        verdade2 = True
 
-                if opcaoPocao == 3:
+
+                elif opcaoPocao == 3:
                     jogador1Dano = (jogador1Dano*30)/100
                     pocoes.remove("[3] Aumentar poder de ataque por dois turnos")
                     verdade3 = True
 
-                if opcaoPocao == 4:
+                elif opcaoPocao == 4:
                     jogador1 = HP
                     pocoes.remove("[4] Receba todos os HP de volta, somente em uma rodada")
 
@@ -238,8 +239,8 @@ else:
         HP = random.randint(200, 1000)
         jogador1 = HP
         inimigo2 = HP
-        jogador1_25 = (jogador1 * 25) / 100
-        inimigo2_25 = (inimigo2 * 25) / 100
+        jogador1_25 = (jogador1 * 25) // 100
+        inimigo2_25 = (inimigo2 * 25) // 100
 
         jogador1Dano = random.randint(1, 50)
         inimigo2Dano = random.randint(1, 50)
@@ -278,7 +279,7 @@ else:
                 respostaStatus = int(input(": "))
 
             if respostaStatus == 1:
-                inimigo2 -= (HP * 5) / 100
+                inimigo2 -= (HP * 5) // 100
             elif respostaStatus == 2:
                 passar = 1
             elif respostaStatus == 3 or dfs < 3:
@@ -286,7 +287,7 @@ else:
                 dfs += 1
             elif respostaStatus == 4:
                 if jogador1 <= jogador1_25:
-                    jogador1 += (HP * 30) / 100
+                    jogador1 += (HP * 30) // 100
 
             if passar == 0:
                 escolha = int(input("Deseja [1] Atacar [2] Curar: "))
@@ -303,7 +304,7 @@ else:
                     respostaStatus2 = int(input(": "))
 
                 if respostaStatus2 == 1:
-                    jogador1 -= (HP * 5) / 100
+                    jogador1 -= (HP * 5) // 100
                 elif respostaStatus2 == 2:
                     passar1 = 1
                 elif respostaStatus2 == 3 or dfs < 3:
@@ -311,29 +312,31 @@ else:
                     dfs += 1
                 elif respostaStatus2 == 4:
                     if inimigo2 <= inimigo2_25:
-                        inimigo2 += (HP * 30) / 100
+                        inimigo2 += (HP * 30) // 100
             else:
                 print("Inimigo paralisado! ")
                 passar -= passar
 
-            if Verdade1 == True:
-                vezesPocoes += 1
+            if verdade1 == True:
+                vezesPocoes +=1
                 cura = curaPocao
                 if vezesPocoes > 2:
-                    Verdade1 = False
+                    verdade1 = False
                     vezesPocoes -= vezesPocao3
 
             elif verdade2 == True:
-                vezesPocoes += 1
+                vezesPocoes+=1
+                danoSofrido = HP - jogador1
                 danoPocao = inimigo2 - ((danoSofrido * 2) / 100)
                 if vezesPocoes > 2:
-                    Verdade1 = False
+                    verdade1 = False
                     danoPocao = 0
-                    vezesPocoes -= vezesPocao3
-            elif Verdade3 == True:
-                jogador1Dano = (jogador1Dano * 30) / 100
+                    opcaoPocao -= opcaoPocao
+
+            elif verdade3 == True:
+                jogador1Dano = (jogador1Dano * 30) // 100
                 if vezesPocoes > 2:
-                    Verdade3 = False
+                    verdade3 = False
                     vezesPocoes -= vezesPocao3
 
             if acao == 1:
@@ -346,30 +349,27 @@ else:
                 # OPÇÕES DE POCOES ---------------------------------------------------------------------------------------------------
                 if opcaoPocao == 1:
                     curaPocao = random.randint(10, 50)
-                    curaPocao = (curaPocao * 5) / 100
+                    curaPocao = (curaPocao * 5) // 100
                     pocoes.remove("[1] Bate Ganha: Se o inimigo atacou, ganhe 5% de cura por duas rodadas")
                     roda = 0
-                    Verdade = True
-                    Verdade1 = True
-                    opcaoPocao2 -= opcaoPocao2
+                    verdade = True
+                    verdade1 = True
+                    opcaoPocao -= opcaoPocao
 
-                if opcaoPocao2 == 2:
+                elif opcaoPocao == 2:
                     if jogador1 != HP:
-                        danoSofrido = HP - jogador1
-                        danoPocao = inimigo2 - ((danoSofrido * 2) / 100)
-                    pocoes.remove(
-                        "[2] Apanha Bate: Caso o inimigo atacar, cause 2% de dano adicional de volta por duas rodadas")
-                    Verdade2 = True
-                    opcaoPocao2 -= opcaoPocao2
+                        pocoes.remove("[2] Apanha Bate: Caso o inimigo atacar, cause 2% de dano adicional de volta por duas rodadas")
+                        verdade2 = True
 
-                if opcaoPocao2 == 3:
-                    jogador1Dano = (jogador1Dano * 30) / 100
+
+                elif opcaoPocao == 3:
+                    jogador1Dano = (jogador1Dano*30)/100
                     pocoes.remove("[3] Aumentar poder de ataque por dois turnos")
-                    Verdade3 = True
+                    verdade3 = True
 
-                if opcaoPocao2 == 4:
+                elif opcaoPocao == 4:
                     jogador1 = HP
-                    pocoes2.remove("[4] Receba todos os HP de volta, somente em uma rodada")
+                    pocoes.remove("[4] Receba todos os HP de volta, somente em uma rodada")
 
                 # OPÇÕES DE POCOES ---------------------------------------------------------------------------------------------------
                 if respostaDano == 1:
