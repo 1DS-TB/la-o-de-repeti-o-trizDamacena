@@ -6,8 +6,8 @@ for i in range(1, numero+1):
         primo += 1
 
 if primo == 2:
-    print(f"{numero} é primo!")
+    print(f"{numero} eh primo!")
 elif numero < 1 :
     print("INVALIDO")
 elif primo >2 or primo == 1 :
-    print(f"{numero} não é primo!")
+    print(f"{numero} nao eh primo!")
