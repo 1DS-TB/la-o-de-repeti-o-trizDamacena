@@ -9,5 +9,7 @@ if primo == 2:
     print(f"{numero} eh primo!")
 elif numero < 1 :
     print("INVALIDO")
-elif primo >2 or primo == 1 :
+elif primo >2:
     print(f"{numero} nao eh primo!")
+elif primo == 1:
+    print("1 nao eh primo")
